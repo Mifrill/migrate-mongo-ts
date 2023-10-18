@@ -1,0 +1,23 @@
+{
+  "name": "migrate-mongo-ts",
+  "version": "1.0.0",
+  "description": "migrate-mongo TS setup",
+  "main": "./src/index.ts",
+  "scripts": {
+    "compile": "rm -rf dist && tsc",
+    "db:migrate:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0 -f migrate-mongo-config.ts'",
+    "db:migrate:status": "ts-node node_modules/.bin/migrate-mongo status -f migrate-mongo-config.ts",
+    "db:rollback": "node -r ts-node/register/transpile-only -r tsconfig-paths/register node_modules/.bin/migrate-mongo down -f migrate-mongo-config.ts",
+    "db:migrate": "node -r ts-node/register/transpile-only -r tsconfig-paths/register node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "migrate-mongo": "^11.0.0",
+    "mongodb": "^6.1.0"
+  }
+}
