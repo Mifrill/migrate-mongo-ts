@@ -9,8 +9,6 @@ export const handleTransaction = async (
     await session.withTransaction(async () => {
       await execute(session)
     })
-  } catch (error) {
-    throw error
   } finally {
     await session.endSession()
   }
