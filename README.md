@@ -16,5 +16,5 @@ docker run -d --rm --name migrate-mongo-dev -p 27019:27019 mongo:5 mongod --port
 docker exec migrate-mongo-dev mongo --host localhost:27019 --eval 'rs.initiate();rs.reconfig({ "_id": "testRS0", "members": [{ "_id": 0, "host": "localhost:27019" }] }, { force: true });'
 docker stop migrate-mongo-dev
 
-mongodb://localhost:27019/migrate-mongo-dev
+mongodb://localhost:27019/migrate-mongo-dev?replicaSet=testRS0
 ```
