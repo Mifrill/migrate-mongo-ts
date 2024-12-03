@@ -18,3 +18,7 @@ docker stop migrate-mongo-dev
 
 mongodb://localhost:27019/migrate-mongo-dev?replicaSet=testRS0
 ```
+To connect this container to another container (image example: `test-image`):
+```
+docker run --rm -e DB_URI="mongodb://localhost:27019/migrate-mongo-dev?replicaSet=testRS0" --net=host test-image
+```
